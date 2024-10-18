@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health - Medical Website Template</title>
+</head>
+<body>
+     <!-- MAKE AN APPOINTMENT -->
+     <section id="appointment" data-stellar-background-ratio="3">
+        <div class="container">
+             <div class="row">
+
+                  <div class="col-md-6 col-sm-6">
+                       <img src="{% static 'images/appointment-image.jpg' %}" class="img-responsive" alt="">
+                  </div>
+
+                  <div class="col-md-6 col-sm-6">
+                       {% if messages %}
+                             {% for message in messages %}
+                                 <p style="color: red">{{ message }}</p>
+                             {% endfor %}
+                       {% endif %}
+
+                       <!-- CONTACT FORM HERE -->
+                       <form id="appointment-form" role="form" method="post" action="#">
+                                {% csrf_token %}
+
+                            <!-- SECTION TITLE -->
+                            <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                                 <h2>Make an appointment</h2>
+                            </div>
+
+                            <div class="wow fadeInUp" data-wow-delay="0.8s">
+                                 <div class="col-md-6 col-sm-6">
+                                      <label for="name">Name</label>
+                                      {{ form.book_name }}
+                                 </div>
+
+                                 <div class="col-md-6 col-sm-6">
+                                      <label for="email">Email</label>
+                                      {{ form.book_email }}
+                                 </div>
+
+                                 <div class="col-md-6 col-sm-6">
+                                      <label for="date">Select Date</label>
+                                      {{ form.book_date}}
+                                 </div>
+
+                                 <div class="col-md-6 col-sm-6">
+                                      <label for="select">Select Department</label>
+                                      {{ form.book_dep}}
+                                 </div>
+
+                                 <div class="col-md-12 col-sm-12">
+                                      <label for="telephone">Phone Number</label>
+                                      {{ form.book_phn }}
+                                      <label for="Message">Additional Message</label>
+                                      {{form.book_desc}}
+                                      <button type="submit" class="form-control" id="cf-submit" name="submit">Submit Button</button>
+                                 </div>
+                            </div>
+                      </form>
+                  </div>
+
+             </div>
+        </div>
+   </section>
+</body>
+</html>
